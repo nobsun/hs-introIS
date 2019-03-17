@@ -3,7 +3,9 @@
   This module is for exercise code which is incomplete module.
   In order to pass typechecking with incomplete module, use @Undefined data type.
 -}
-module UndefinedType (Undefined) where
+module UndefinedType (Undefined, (===)) where
+
+import Data.Bool
 
 {- |
   A dummy type
@@ -53,3 +55,7 @@ instance Floating Undefined where
   asinh _ = undef
   acosh _ = undef
   atanh _ = undef
+
+infixl 0 ===
+(===) :: (Eq a, Show a) => a -> a -> a 
+x === y = bool (error (show x ++ "≠" ++ show y)) x (x == y)

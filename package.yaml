@@ -25,9 +25,14 @@ dependencies:
 - markdown-unlit
 - doctest
 - hspec
+- main-tester
+- bytestring
+- utf8-string
 
 library:
-  source-dirs: src
+  source-dirs:
+  - src
+  - ans
 
 executables:
   hs-introIS-exe:
@@ -42,7 +47,17 @@ executables:
 
 tests:
   hs-introIS-test:
-    main:                Spec.hs
+    main:                spec.hs
+    source-dirs:         test
+    # ghc-options:
+    # - -threaded
+    # - -rtsopts
+    # - -with-rtsopts=-N
+    dependencies:
+    - hs-introIS
+
+  hs-introIS-doctest:
+    main:		 doctests.hs
     source-dirs:         test
     # ghc-options:
     # - -threaded
